@@ -9,7 +9,7 @@
 <body>
   <div class="container">
     <aside class="sidebar">
-      <img src="img/맛있조 로고 디자인.png" alt="로고" class="logo" />
+      <img src="img/맛있조로고.png" alt="로고" class="logo" />
       <nav>
         <ul>
           <li><a href="#">홈</a></li>
@@ -36,26 +36,28 @@
       <!-- 댓글 섹션 -->
       <div class="comment-section">
   <h3>댓글</h3>
+  
   <ul class="comment-list">
-    <li>
-      <div class="comment-meta">홍길동 · 2025.05.18</div>
-      <div class="comment-content">정말 맛있어 보여요! 다음에 꼭 가볼게요.</div>
+    <li class="comment-row">
+      <div class="comment-left">정말 맛있네요! 다음에 또 가볼게요</div>
+      <div class="comment-right">홍길동 2025.01.18</div>
     </li>
-    <li>
-      <div class="comment-meta">김철수 · 2025.05.17</div>
-      <div class="comment-content">여기 자주 가는데 진짜 강추입니다 👍</div>
+    <li class="comment-row">
+      <div class="comment-left">여기 자차로 가는 길이 감쪽같습니다 🚗</div>
+      <div class="comment-right">김철수 2025.08.07</div>
     </li>
-    <li>
-      <div class="comment-meta">이영희 · 2025.05.16</div>
-      <div class="comment-content">사진만 봐도 군침 도네요~</div>
+    <li class="comment-row">
+      <div class="comment-left">사장님 인사도 친절하셨어요 😊</div>
+      <div class="comment-right">이영희 2025.09.16</div>
     </li>
   </ul>
 
   <div class="comment-input">
-    <textarea id="commentText" placeholder="댓글을 입력하세요..."></textarea>
-    <button type="submit">댓글 등록</button>
+    <textarea placeholder="댓글을 입력하세요"></textarea>
+    <button type="button">댓글 등록</button>
   </div>
 </div>
+
 
   <script src="detail.js"></script>
 </body>
