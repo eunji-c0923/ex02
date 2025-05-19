@@ -142,7 +142,6 @@ nav{width: 200px; min-height: 100vh; float: left; background: #ffb347;
 /* 작성자 스타일 별도 지정 (선택사항) */
 .writer {
   margin-bottom: 10px;
-  font-weight: bold;
 }
 
 /* option 영역 정리 */
@@ -245,7 +244,7 @@ nav{width: 200px; min-height: 100vh; float: left; background: #ffb347;
   align-self: flex-end;
   padding: 6px 14px;
   font-size: 0.95rem;
-  background-color: #ff7f50;
+  background-color: #ffb347;
   color: white;
   border: none;
   border-radius: 6px;
