@@ -183,3 +183,9 @@ function deleteComment(id) {
   storedComments = storedComments.filter(c => c.id !== id);
   localStorage.setItem("comments", JSON.stringify(storedComments));
 }
+  function confirmDelete() {
+    if (confirm("정말 삭제하시겠습니까?")) {
+      // 예: deleteReview.jsp?id=123
+      window.location.href = "deleteReview.jsp?reviewId=123";
+    }
+  }

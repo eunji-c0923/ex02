@@ -324,24 +324,6 @@ th:nth-child(7), td:nth-child(7) {
   background-color: #e53935;
 }
 
-/* Rating buttons */
-.rating-buttons {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-
-.rating-button {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  color: #333;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
 .rating-button.active,
 .rating-button:hover {
   background-color: #ff9800;
@@ -420,13 +402,68 @@ th:nth-child(7), td:nth-child(7) {
 }
 
 /* 메인 카드 */
-.main-card {
-  background-color: #fff8f0;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px #ffd3b6(0, 0, 0, 0.08);
-  margin-bottom: 40px;
+.main-card section {
+  margin-bottom: 20px;
+  padding: 10px;
 }
+
+.review-header h2 {
+  margin-bottom: 5px;
+}
+
+.review-info p, .review-body p {
+  margin: 5px 0;
+}
+
+.review-img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.main-card label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.main-card input[type="text"],
+.main-card input[type="number"],
+.main-card textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.edit-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-update {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 
 .main-card h2 {
   font-size: 2rem;
@@ -447,6 +484,13 @@ th:nth-child(7), td:nth-child(7) {
   border-radius: 12px;
   border: 1px solid #ffd3b6;
 }
+
+.author {
+  text-align: right;
+  color: #666;
+  margin-bottom: 20px;
+}
+
 
 .comment-section {
   max-width: 1700px;
@@ -570,4 +614,137 @@ th:nth-child(7), td:nth-child(7) {
 
 .comment-input button:hover {
   background-color: #e76b3c;
+}
+
+.review-edit-card {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 30px;
+  max-width: 600px;
+  margin: 60px auto;
+}
+
+.review-edit-card h2 {
+  text-align: center;
+  color: #ff6f00;
+  margin-bottom: 30px;
+}
+
+.review-edit-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.review-edit-card label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.review-edit-card input[type="text"],
+.review-edit-card select,
+.review-edit-card textarea,
+.review-edit-card input[type="file"] {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: 'Pretendard', sans-serif;
+  background-color: #fafafa;
+}
+
+.review-edit-card textarea {
+  resize: vertical;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.update-btn,
+.delete-btn {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.update-btn {
+  background-color: tomato;
+  color: white;
+}
+
+.update-btn:hover {
+  background-color: #e64a19;
+}
+
+.delete-btn {
+  background-color: #777;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #555;
+}
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #ff9800;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+  box-sizing: border-box;
+  position: fixed;
+  height: 100vh;
+}
+
+.content {
+  margin-left: 250px;
+  padding: 30px;
+  box-sizing: border-box;
+  flex-grow: 1;
+}
+
+.main-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.edit-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  gap: 10px; /* 버튼 사이 간격 */
+}
+
+
+.btn-update,
+.btn-delete {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-update {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-delete {
+  background-color: #f44336;
+  color: white;
 }
