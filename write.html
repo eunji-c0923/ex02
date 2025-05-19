@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>리뷰 작성</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="nav-logo">
+        <img src="img/맛있조 로고 디자인.png" alt="로고" class="logo" />
+        <span class="site-name"></span>
+      </div>
+
+      <h2>메뉴</h2>
+      <ul>
+        <li><a href="index.html">홈</a></li>
+        <li><a href="write.html">리뷰 작성</a></li>
+        <li><a href="index.html">리뷰 목록</a></li>
+      </ul>
+    </div>
+    <main>
+      <h1>맛집 리뷰 작성</h1>
+      <form action="saveReview.jsp" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="title">제목</label>
+          <input type="text" id="title" name="title" required />
+        </div>
+        <div class="form-group">
+          <label for="writer">작성자</label>
+          <input type="text" id="writer" name="writer" required />
+        </div>
+        <div class="form-group">
+          <label for="location">지역명</label>
+          <input type="text" id="location" name="location" required />
+        </div>
+        <div class="form-group">
+          <label for="restaurant">맛집 이름</label>
+          <input type="text" id="restaurant" name="restaurant" required />
+        </div>
+        <div class="form-group">
+          <label for="rating">평점</label>
+          <select id="rating" name="rating" required>
+            <option value="10">10점</option>
+            <option value="9">9점</option>
+            <option value="8">8점</option>
+            <option value="7">7점</option>
+            <option value="6">6점</option>
+            <option value="5">5점</option>
+            <option value="4">4점</option>
+            <option value="3">3점</option>
+            <option value="2">2점</option>
+            <option value="1">1점</option>
+          </select>
+
+        </div>
+        <div class="form-group">
+          <label for="content">리뷰 내용</label>
+          <textarea id="content" name="content" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="image">사진 업로드</label>
+          <input type="file" id="image" name="image" />
+        </div>
+        <div class="form-group">
+          <input type="submit" value="리뷰 등록" />
+        </div>
+      </form>
+    </main>
+  </div>
+</body>
+</html>

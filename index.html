@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>맛집 커뮤니티</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+  <nav class="sidebar">
+  <div class="nav-logo">
+    <img src="img/맛있조 로고 디자인.png" alt="로고" class="logo" />
+  </div>
+  <h2>메뉴</h2>
+  <ul>
+    <li><a href="index.html">홈</a></li>
+    <li><a href="#">인기글</a></li>
+    <li><a href="write.html">리뷰 작성</a></li>
+    <li><a href="#">마이페이지</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <header>
+        <h1 class="main-title">리뷰 게시판</h1>
+        <button class="write-btn" onclick="location.href='write.html'">+</button>
+      </header>
+         
+      <div class="controls">
+        <div class="dropdown">
+          <button class="dropbtn">정렬</button>
+          <div class="dropdown-content">
+            <a href="#" id="sort-high">평점 높은순</a>
+            <a href="#" id="sort-low">평점 낮은순</a>
+          </div>
+        </div>
+
+        <div class="search">
+          <input type="text" id="searchInput" placeholder="리뷰 검색..." />
+          <button id="searchBtn">검색</button>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>지역</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>평점</th> <!-- 실제 데이터: 작성일 -->
+            <th>내용</th> <!-- 실제 데이터: 조회수 -->
+          </tr>
+        </thead>
+        <tbody id="reviewTableBody"></tbody>
+      </table>
+
+      <div class="pagination" id="pagination"></div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

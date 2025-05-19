@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>맛집 상세 페이지</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <img src="img/맛있조 로고 디자인.png" alt="로고" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="#">홈</a></li>
+          <li><a href="#">맛집 목록</a></li>
+          <li><a href="write.html">리뷰 등록</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <div class="main-card">
+        <h2>진짜 맛있는 고기집</h2>
+        <p><strong>작성자:</strong> 김맛객</p>
+        <p><strong>지역명:</strong> 서울 강남구</p>
+        <p><strong>맛집 이름:</strong> 불타는 고기</p>
+        <p><strong>평점:</strong> 9 / 10</p>
+        <p><strong>리뷰:</strong><br>
+          고기의 육즙이 터지는 최고의 맛집! 반찬도 정갈하고 분위기까지 완벽해요.
+          직원분들 서비스도 친절하고, 다음에도 꼭 재방문할 거예요!
+        </p>
+        <img src="food.jpg" alt="리뷰 사진" class="review-img" />
+      </div>
+
+      <!-- 댓글 섹션 -->
+      <div class="comment-section">
+  <h3>댓글</h3>
+  <ul class="comment-list">
+    <li>
+      <div class="comment-meta">홍길동 · 2025.05.18</div>
+      <div class="comment-content">정말 맛있어 보여요! 다음에 꼭 가볼게요.</div>
+    </li>
+    <li>
+      <div class="comment-meta">김철수 · 2025.05.17</div>
+      <div class="comment-content">여기 자주 가는데 진짜 강추입니다 👍</div>
+    </li>
+    <li>
+      <div class="comment-meta">이영희 · 2025.05.16</div>
+      <div class="comment-content">사진만 봐도 군침 도네요~</div>
+    </li>
+  </ul>
+
+  <div class="comment-input">
+    <textarea id="commentText" placeholder="댓글을 입력하세요..."></textarea>
+    <button type="submit">댓글 등록</button>
+  </div>
+</div>
+
+  <script src="detail.js"></script>
+</body>
+</html>

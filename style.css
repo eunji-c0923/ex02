@@ -1,0 +1,537 @@
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #333;
+}
+
+.container {
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  background-color: #ffb347;
+  padding: 20px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.sidebar h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Main content */
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  /* 기존 flex 삭제 */
+  display: block; /* 또는 그냥 삭제해도 됨 */
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  /* align-items: center; 제거 */
+}
+
+header h1::before {
+  content: none; /* 로고 이미지 없앰 */
+}
+
+
+/* Write button */
+.write-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 70px;
+  height: 70px;
+  background-color: tomato;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.write-btn:hover {
+  background-color: #e64522;
+  transform: scale(1.05);
+}
+
+/* Controls: 정렬 + 검색 영역 */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #ffb347;
+  color: white;
+  padding: 10px 40px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  min-width: 160px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Search box */
+.search {
+  display: flex;
+  align-items: center;
+}
+
+.search input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  width: 200px;
+}
+
+.search button {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  background-color: #ffb347;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+/* 특정 열 숨기기: 사진/내용 */
+th:nth-child(6), td:nth-child(6),
+th:nth-child(7), td:nth-child(7) {
+  display: none;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #eee;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination button.active {
+  background-color: #ffb347;
+  color: white;
+  font-weight: bold;
+}
+
+/* Review page */
+.review-page {
+  flex: 1;
+  padding: 40px;
+  background: #fafafa;
+}
+
+.review-hero {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.review-main-image {
+  flex: 0 0 40%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.review-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 가게 정보 왼쪽 정렬 */
+.restaurant-info {
+  text-align: left;
+}
+
+/* 리뷰 내용 오른쪽 정렬 */
+.review-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  text-align: right;
+}
+
+/* 리뷰 제목 */
+.review-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* 리뷰 메타정보 */
+.review-meta {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.review-meta span {
+  margin-right: 15px;
+}
+
+/* 가게 이름 */
+.restaurant-name {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+/* 평점 */
+.review-rating {
+  margin-top: 10px;
+}
+
+.rating-select {
+  margin-top: 8px;
+  padding: 6px 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #f2f2f2;
+  pointer-events: none;
+}
+
+/* Review action buttons */
+.review-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.edit-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #43a047;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #e53935;
+}
+
+/* Rating buttons */
+.rating-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.rating-button {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rating-button.active,
+.rating-button:hover {
+  background-color: #ff9800;
+  color: #fff;
+  border-color: #ff9800;
+}
+
+/* Review detail */
+.review-detail {
+  text-align: center;
+}
+
+.review-detail .detail-row label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.review-detail .detail-row p {
+  margin-bottom: 16px;
+}
+
+/* ============================= */
+/* detail.html 전용 추가 스타일  */
+/* ============================= */
+
+/* 컨테이너 레이아웃 */
+.container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #fffdf9;
+  font-family: 'Apple SD Gothic Neo', sans-serif;
+}
+
+/* 사이드바 */
+.sidebar {
+  width: 220px;
+  background-color: #fff3e0;
+  padding: 30px 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar nav ul li {
+  margin-bottom: 16px;
+}
+
+.sidebar nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  display: block;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.sidebar nav ul li a:hover {
+  background-color: #ffe0b2;
+}
+
+/* 메인 콘텐츠 */
+.content {
+  flex: 1;
+  padding: 40px;
+}
+
+/* 메인 카드 */
+.main-card {
+  background-color: #fff8f0;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+}
+
+.main-card h2 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: #ff6b00;
+}
+
+.main-card p {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.review-img {
+  margin-top: 20px;
+  max-width: 100%;
+  border-radius: 12px;
+  border: 1px solid #ffd3b6;
+}
+
+/* 댓글 영역 전체 */
+.comment-section {
+  margin-top: 30px;
+  padding: 16px;
+  background-color: #fff8f0;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+ 
+
+/* 댓글 제목 */
+.comment-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+/* 댓글 리스트 스타일 */
+.comment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comment-list li {
+  background-color: #ffffff;
+  border: 1px solid #ffd3b6;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+/* 댓글 한 줄 */
+.comment-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border-bottom: 1px solid #eee;
+}
+
+/* 댓글 내용 */
+.comment-content {
+  flex: 1;
+  font-size: 0.95rem;
+  color: #333;
+  margin-right: 12px;
+  word-break: break-word;
+}
+
+/* 댓글 입력 */
+/* 댓글 입력 전체 영역 */
+.comment-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* 댓글 내용 텍스트 영역만 표시 */
+.comment-input textarea {
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+  min-height: 60px;
+  resize: vertical;
+}
+
+/* 댓글 등록 버튼 */
+.comment-input button {
+  align-self: flex-end;
+  padding: 6px 14px;
+  font-size: 0.95rem;
+  background-color: #ff7f50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.comment-input button:hover {
+  background-color: #e76b3c;
+}
+
