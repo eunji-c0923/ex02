@@ -1,0 +1,30 @@
+drop table tbl_board;
+drop sequence seq_board;
+
+create sequence seq_board;
+
+create table tbl_board(
+    bno number(10,0),
+    title varchar2(200) not null,
+    content varchar2(2000) not null,
+    writer varchar2(50) not null,
+    regdate date default sysdate,    --작성일
+    updatedate date default sysdate  --수정일
+);
+
+alter table tbl_board add constraint pk_board
+primary key(bno);  --기본키 이름을 따로 지정함
+
+commit;
+
+SELECT constraint_name
+FROM user_constraints
+WHERE table_name = 'TBL_BOARD'
+AND constraint_type = 'P';  --기본키 조회
+
+SELECT constraint_name
+FROM user_constraints
+WHERE table_name = 'BOARD'
+AND constraint_type = 'P';  --board 테이블 기본키 조회
+
+select * from tbl_board where bno > 0;  --인덱스 통해서 조회(검색속도 향상)

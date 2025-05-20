@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.zerock.mapper.ReviewMapper">
+
+  <select id="read" resultType="org.zerock.domain.ReviewVO">
+    select * from review_board where review_id = #{review_id}
+  </select>
+  
+  <select id="getList" resultType="org.zerock.domain.ReviewVO">
+   <!-- 인덱스 통해서 조회(검색속도 향상) / 오름차순 정렬 -->
+   <!-- select * from review_board where review_id > 0 -->
+   select * from review_board where review_id > 0 order by review_id asc
+  </select>
+  
+  <insert id="insert">
+  	insert into review_board (review_id, review_title, restaurant_name, review_content, writer_name, rating, region) 
+  	values (re_board.nextval, #{review_title}, #{restaurant_name}, #{review_content}, #{writer_name}, #{rating}, #{region})
+  </insert>
+  
+  <insert id="insertSelectKey">
+
+  	<selectKey keyProperty="review_id" order="BEFORE" resultType="long">
+  		select re_board.nextval from dual
+  	</selectKey>
+  	
+  	insert into review_board (review_id, review_title, restaurant_name, review_content, writer_name, rating, region) 
+  	values (#{review_id}, #{review_title}, #{restaurant_name}, #{review_content}, #{writer_name}, #{rating}, #{region})
+  </insert>
+  
+  <delete id="delete">
+  	delete from review_board where review_id = #{review_id}
+  </delete>
+  
+  <update id="update">
+  	update review_board 
+  	set review_title = #{review_title}, 
+  	restaurant_name = #{restaurant_name}, 
+  	review_content = #{review_content},
+  	rating = #{rating}, 
+  	region = #{region}
+  	where review_id = #{review_id}
+  </update>
+  
+  <!-- 검색조건을 함수화 시킴(getListWithPaging, getTotalCount에서 사용) -->
+  <!-- ✅ 수정된 criteria -->
+	<sql id="criteria"> 
+	  <trim prefix="(" suffix=")" prefixOverrides="or" suffixOverrides="or">  	                                                 
+	  	<foreach collection="typeArr" item="type" separator="or">
+	  		<if test="type=='T'.toString()">
+	  			review_title like '%'||#{keyword}||'%'
+	  		</if>
+	  		<if test="type=='C'.toString()">
+	  			review_content like '%'||#{keyword}||'%'
+	  		</if>
+	  		<if test="type=='W'.toString()">
+	  			writer_name like '%'||#{keyword}||'%'
+	  		</if>
+	  	</foreach>
+	  </trim>
+	</sql>
+
+  
+  <select id="getListWithPaging" resultType="org.zerock.domain.ReviewVO">
+  	<![CDATA[
+  	select review_id, review_title, restaurant_name, review_content, writer_name, rating, region
+  	from(
+  		select /*+ index_desc(review_board pk_board) */
+  		rownum rn, review_id, review_title, restaurant_name, review_content, writer_name, rating, region
+  		from review_board
+  		where 
+  	]]>	
+  	    
+  	<include refid="criteria"></include>    
+  	    
+  	<![CDATA[	
+  		rownum <= #{pageNum} * #{amount}
+  	)
+  	where rn > (#{pageNum}-1) * #{amount}
+	]]>	
+  </select>
+  
+  <select id="getTotalCount" resultType="int">
+  	select count(*) from review_board 
+  	where 1=1
+  	<include refid="criteria" />
+  	and review_id > 0
+  </select>
+  
+  <!-- 테스트 -->
+  <select id="searchTest" resultType="org.zerock.domain.ReviewVO">
+  <![CDATA[
+  select * from review_board 
+  where 
+  ]]>
+  <trim prefix="(" suffix=")" prefixOverrides="or" suffixOverrides="or">
+    <foreach collection="map" index="key" item="val" separator="or">
+      <if test="key=='T'.toString()">
+        review_title like #{val}
+      </if>
+      <if test="key=='C'.toString()">
+        review_content like #{val}
+      </if>
+      <if test="key=='W'.toString()">
+        writer_name like #{val}
+      </if>
+    </foreach>
+  </trim>
+  <![CDATA[
+    and rownum < 10  
+  ]]>
+  </select>
+  
+</mapper>
