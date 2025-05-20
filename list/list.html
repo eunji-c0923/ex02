@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/list_css.css">
+    <script src="script/jquery-1.12.3.js"></script>
+    <script src="script/list_script.js"></script>
+</head>
+<body>
+
+    <div id="main">
+        <header>
+            <div id="logo"><a href="#"><img src="images/오늘 뭐먹조.png" alt="로고"></a></div>
+            <div id="menu">
+                <li><a href="#">한식</a></li>
+                <li><a href="#">중식</a></li>
+                <li><a href="#">일식</a></li>
+                <li><a href="#">양식</a></li>
+                <li><a href="#">디저트</a></li>
+            </div>
+
+            <div id="spot">
+                <li><a href="#">로그인</a></li>
+                <li><a href="#">회원가입</a></li>
+                <li><a href="#">마이페이지</a></li>
+            </div>
+
+            <nav>
+                <div class="menu">
+                    <li class="none"><a href="#">메뉴</a>
+
+                    <li><a href="#">서울</a>
+                    <ul class="sub">
+                        <li><a href="#">강남</a></li>
+                        <li><a href="#">잠실</a></li>
+                        <li><a href="#">종로</a></li>
+                        <li><a href="#">홍대</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">경기도</a>
+                    <ul class="sub">
+                        <li><a href="#">고양</a></li>
+                        <li><a href="#">성남</a></li>
+                        <li><a href="#">수원</a></li>
+                        <li><a href="#">포천</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">경상도</a>
+                    <ul class="sub">
+                        <li><a href="#">대구</a></li>
+                        <li><a href="#">부산</a></li>
+                        <li><a href="#">울산</a></li>
+                        <li><a href="#">포항</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">전라도</a>
+                    <ul class="sub">
+                        <li><a href="#">광주</a></li>
+                        <li><a href="#">목포</a></li>
+                        <li><a href="#">여수</a></li>
+                        <li><a href="#">전주</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">충청도</a>
+                    <ul class="sub">
+                        <li><a href="#">공주</a></li>
+                        <li><a href="#">대전</a></li>
+                        <li><a href="#">천안</a></li>
+                        <li><a href="#">청주</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">제주도</a>
+                    <ul class="sub">
+                        <li><a href="#">서귀포시</a></li>
+                        <li><a href="#">제주시</a></li>
+                    </ul>
+                    </li>
+                </div>
+            </nav>
+        </header>
+        
+        <div id="body">
+        <h1 class="main-title">맛ZON</h1>
+        <div id="list">
+
+        <div class="controls">
+        <div class="dropdown">
+          <button class="dropbtn">정렬</button>
+          <div class="dropdown-content">
+            <a href="#" id="sort-high">평점 높은순</a>
+            <a href="#" id="sort-low">평점 낮은순</a>
+          </div>
+        </div>
+
+        <div class="search">
+          <input type="text" id="searchInput" placeholder="리뷰 검색..." />
+          <button id="searchBtn">검색</button>
+        </div>
+      </div>
+  
+        <table>
+        <thead>
+            <tr>
+            <th>번호</th>
+            <th>지역</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>게시날</th>
+            <th>내용</th>
+            </tr>
+        </thead>
+        <tbody id="reviewTableBody"></tbody>
+        </table> 
+
+        <div class="pagination">
+            <button class="pagination-button">1</button>
+            <button class="pagination-button">2</button>
+            <button class="pagination-button">다음</button>
+        </div>
+
+        </div> <!-- #list -->
+        </div>
+
+    </div> 
+
+ 
+    
+</body>
+</html>
