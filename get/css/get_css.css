@@ -122,12 +122,46 @@ nav{width: 200px; min-height: 100vh; float: left; background: #ffb347;
   box-shadow: 0 4px 12px #ffd3b6(0, 0, 0, 0.08);
   margin-bottom: 35px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+  justify-content: space-between;
+  align-items: center;
 }
 
 .main-card h3 {
   font-size: 2rem;
   margin-bottom: 12px;
   color: #ff6b00;
+  float: left;
+}
+
+.btn-modifty,
+.btn-list {
+  padding: 6px 14px;
+  font-size: 15px;
+  background-color: #ffb347;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 16px;
+  margin-bottom: 12px;
+  float: right;
+}
+
+.card-header {
+   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-actions {
+  
+  gap: 15px;
+}
+
+/* <strong> 태그 색상 통일 */
+strong {
+  color: #333;
 }
 
 .main-card p {
@@ -141,7 +175,9 @@ nav{width: 200px; min-height: 100vh; float: left; background: #ffb347;
 
 /* 작성자 스타일 별도 지정 (선택사항) */
 .writer {
-  margin-bottom: 10px;
+  font-size: 15px;
+  color: #333;
+  margin-top: 4px;
 }
 
 /* option 영역 정리 */

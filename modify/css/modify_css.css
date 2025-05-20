@@ -1,0 +1,216 @@
+* { margin: 0; padding: 0; }
+a { text-decoration: none; color: #333; }
+ul, li { list-style: none; }
+html, body {
+  height: auto;
+  min-height: 100vh;
+  width: 100%;
+}
+
+#main {
+  width: 1200px;
+  min-height: 100vh;
+  background: #eee;
+  margin: auto;
+}
+
+header {
+  width: 1200px;
+  height: 100px;
+  float: left;
+  background: #fff3e0;
+}
+
+#logo {
+  width: 200px;
+  height: 100px;
+  float: left;
+  background: #fff3e0;
+}
+
+#logo a > img {
+  width: 100px;
+  height: 100px;
+  margin-left: 50px;
+}
+
+#menu {
+  font-size: 18px;
+  margin-left: 40px;
+  float: left;
+  line-height: 100px;
+}
+
+#menu li {
+  padding: 5px;
+  padding-right: 15px;
+  float: left;
+}
+
+#menu li > a {
+  color: #e64522;
+  font-weight: bold;
+}
+
+#spot {
+  font-size: 16px;
+  margin-left: 40px;
+  float: right;
+  line-height: 100px;
+  margin-right: 40px;
+}
+
+#spot li {
+  padding: 5px;
+  float: right;
+}
+
+nav {
+  width: 200px;
+  min-height: 100vh;
+  float: left;
+  background: #ffb347;
+  margin-top: 100px;
+  position: absolute;
+}
+
+.menu li {
+  width: 200px;
+  line-height: 45px;
+  text-align: center;
+  font-size: 20px;
+  background: #ffb347;
+  position: relative;
+}
+
+.menu li:hover {
+  background: #ffe0b4;
+}
+
+.menu li > a {
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.menu > .none {
+  width: 200px;
+  height: 90px;
+  text-align: center;
+}
+
+.menu > .none > a {
+  font-size: 30px;
+  position: relative;
+  top: 25px;
+  color: #e64522;
+}
+
+.menu > .none:hover {
+  background: #ffb347;
+}
+
+.menu li.none {
+  border-bottom: 2px solid #fffdf9;
+  padding-bottom: 8px;
+}
+
+.sub {
+  display: none;
+}
+
+.sub li {
+  width: 200px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  background: #fff;
+}
+
+.sub li:hover {
+  background: #eee;
+}
+
+.sub li > a {
+  color: #333;
+  font-weight: normal;
+}
+
+#body {
+  width: calc(100% - 200px);
+  min-height: 100vh;
+  float: left;
+  background: #fffdf9;
+  margin-left: 200px;
+  position: relative;
+}
+
+#list {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.main-card {
+  width: 800px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.main-card label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #333;
+}
+
+.main-card input[type="text"],
+.main-card input[type="number"],
+.main-card textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.review-img {
+  margin-top: 20px;
+  max-width: 100%;
+  border-radius: 12px;
+  border: 1px solid #ffd3b6;
+}
+
+.edit-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-writer, .btn-delete, .btn-update {
+  align-self: flex-end;
+  padding: 6px 14px;
+  font-size: 0.95rem;
+  background-color: #ffb347;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* <strong> 태그 색상 통일 */
+strong {
+  color: #333;
+}
