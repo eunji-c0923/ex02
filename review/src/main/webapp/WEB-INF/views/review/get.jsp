@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -83,39 +85,33 @@
             </nav>
         </header>
         
+
         <div id="body">
-        <div id="list">
+            <div id="list">
+                <main class="content">
+                    <div class="main-card">
+                        <!-- 동적으로 출력 -->
+                        <h3>${review.review_title}</h3>
+                        <p class="writer"><strong>작성자:</strong> ${review.writer_name}</p>
 
-        <main class="content">
-        <div class="main-card">
-            <h3>진짜 맛있는 고기집</h3>
-            <p class="writer"><strong>작성자:</strong> 김맛객 </p>
+                        <div class="option">
+                            <p><strong>지역명:</strong> ${review.region}</p>
+                            <p><strong>맛집 이름:</strong> ${review.restaurant_name}</p>
+                            <p><strong>평점:</strong> ${review.rating} / 10</p>
+                        </div>
 
-            <div class="option">
-                <p><strong>지역명:</strong> 서울 강남구</p>
-                <p><strong>맛집 이름:</strong> 불타는 고기</p>
-                <p><strong>평점:</strong> 9 / 10</p>
-            </div>
-
-            <div class="review-box">
-                <p>
-                    고기의 육즙이 터지는 최고의 맛집! 반찬도 정갈하고 분위기까지 완벽해요.
-                    직원분들 서비스도 친절하고, 다음에도 꼭 재방문할 거예요! 완전 굿굿입니다!!!
-                    사진에 있는 메뉴 꼭 먹어보세요~~고기의 육즙이 터지는 최고의 맛집! 반찬도 정갈하고 분위기까지 완벽해요.
-                    직원분들 서비스도 친절하고, 다음에도 꼭 재방문할 거예요! 완전 굿굿입니다!!!
-                    사진에 있는 메뉴 꼭 먹어보세요~~고기의 육즙이 터지는 최고의 맛집! 반찬도 정갈하고 분위기까지 완벽해요.
-                    직원분들 서비스도 친절하고, 다음에도 꼭 재방문할 거예요! 완전 굿굿입니다!!!
-                    사진에 있는 메뉴 꼭 먹어보세요~~고기의 육즙이 터지는 최고의 맛집! 반찬도 정갈하고 분위기까지 완벽해요.
-                    직원분들 서비스도 친절하고, 다음에도 꼭 재방문할 거예요! 완전 굿굿입니다!!!
-                    사진에 있는 메뉴 꼭 먹어보세요~~고기의 육즙이 터지는 최고의 맛집! 반찬도 정갈하고 분위기까지 완벽해요.
-                    직원분들 서비스도 친절하고, 다음에도 꼭 재방문할 거예요! 완전 굿굿입니다!!!
-                    사진에 있는 메뉴 꼭 먹어보세요~~고기의 육즙이 터지는 최고의 맛집! 반찬도 정갈하고 분위기까지 완벽해요.
-                    직원분들 서비스도 친절하고, 다음에도 꼭 재방문할 거예요! 완전 굿굿입니다!!!
-            </div>
+                        <div class="review-box">
+                            <p>${review.review_content}</p> <!-- 리뷰 내용 출력 -->
+                        </div>
 
             <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA2MjZfMjM5%2FMDAxNzE5MzY1MTEyNTU1.p5ZDtbFV1MNRBGl2VYHufZKYzyBrHBR8HTTCWJPXrqUg.KNzAFt5pUrAWRNZs6MQupItChuqzHCm_aAez2yflapcg.JPEG%2Fimage_6.jpg&type=sc960_832" alt="리뷰 사진" class="review-img" />
         </div>
         </main>
+        <div class="edit-actions">
+            <button type="submit" class="btn-writer">등록</button>
+            <!--<button type="submit" class="btn-update">수 정</button>
+            <button type="button" class="btn-delete">삭 제</button>-->
+        </div>
 
 
       <!-- 댓글 섹션: 절대 건들지 말것 -->

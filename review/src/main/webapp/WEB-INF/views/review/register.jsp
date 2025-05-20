@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -83,62 +86,62 @@
             </nav>
         </header>
         
-        <div id="body">
-            <div id="list">
+<div id="body">
+    <div id="list">
+    
+    <main class="content">
+        <form class="main-card" action="/review/register" method="post">
         
-        <main class="content">
-            <form class="main-card">
-            <label for="author"><strong>제목:</strong></label>
-            <input type="text" id="author" name="author" value="진짜 맛있는 고기집" />
-        
-            <label for="author"><strong>작성자:</strong></label>
-            <input type="text" id="author" name="author" value="김맛객" />
+        <!-- 제목 -->
+        <label for="review_title"><strong>제목:</strong></label>
+        <input type="text" id="review_title" name="review_title" />
+    
+        <!-- 작성자 -->
+        <label for="writer_name"><strong>작성자:</strong></label>
+        <input type="text" id="writer_name" name="writer_name" />
 
-            <label for="region"><strong>지역명:</strong></label>
-            <input type="text" id="region" name="region" value="서울 강남구" />
+        <!-- 지역명 -->
+        <label for="region"><strong>지역명:</strong></label>
+        <input type="text" id="region" name="region" />
 
-            <label for="restaurant"><strong>맛집 이름:</strong></label>
-            <input type="text" id="restaurant" name="restaurant" value="불타는 고기" />
+        <!-- 맛집 이름 -->
+        <label for="restaurant_name"><strong>맛집 이름:</strong></label>
+        <input type="text" id="restaurant_name" name="restaurant_name" />
 
-            <label for="rating"><strong>평점:</strong></label>
-                <select id="rating" name="rating">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9" selected>9</option>
-                <option value="10">10</option>
-                </select>
+        <!-- 평점 -->
+        <label for="rating"><strong>평점:</strong></label>
+        <select id="rating" name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9" selected>9</option>
+            <option value="10">10</option>
+        </select>
 
+        <!-- 리뷰 -->
+        <label for="review_content"><strong>리뷰:</strong></label>
+        <textarea id="review_content" name="review_content" rows="5"></textarea>
 
-            <label for="review"><strong>리뷰:</strong></label>
-            <textarea id="review" name="review" rows="5">고기의 육즙이 터지는 최고의 맛집! 반찬도 정갈하고 분위기까지 완벽해요.
-            직원분들 서비스도 친절하고, 다음에도 꼭 재방문할 거예요!</textarea>
+        <!-- 리뷰 사진 (추후 처리) -->
+        <label for="review-img"><strong>리뷰 사진:</strong></label>
+        <input type="file" id="review-img" name="review-img" accept="image/*" />
 
-            <label for="review-img"><strong>리뷰 사진:</strong></label>
-            <input type="file" id="review-img" name="review-img" accept="image/*" />
-
+        <!-- 제출 버튼 -->
         <div class="edit-actions">
             <button type="submit" class="btn-writer">등록</button>
-            <!--<button type="submit" class="btn-update">수 정</button>
-            <button type="button" class="btn-delete">삭 제</button>-->
         </div>
         </form>
 
         </main>
-        
-
-
-            
+       
         </div>
         </div>
     </div> 
 
- 
-    
 </body>
 </html>

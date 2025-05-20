@@ -3,67 +3,89 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="org.zerock.mapper.ReviewMapper">
+  <mapper namespace="org.zerock.mapper.ReviewMapper">
 
+  <!-- 리뷰 읽기 -->
   <select id="read" resultType="org.zerock.domain.ReviewVO">
     select * from review_board where review_id = #{review_id}
   </select>
   
+  <!-- 리뷰 리스트 가져오기 -->
   <select id="getList" resultType="org.zerock.domain.ReviewVO">
-   <!-- 인덱스 통해서 조회(검색속도 향상) / 오름차순 정렬 -->
-   <!-- select * from review_board where review_id > 0 -->
-   select * from review_board where review_id > 0 order by review_id asc
+    select * from review_board where review_id > 0 order by review_id asc
   </select>
   
+  <!-- 리뷰 등록 -->
   <insert id="insert">
-  	insert into review_board (review_id, review_title, restaurant_name, review_content, register_date, writer_name, rating, region) 
-  	values (re_board.nextval, #{review_title}, #{restaurant_name}, #{review_content}, #{register_date}, #{writer_name}, #{rating}, #{region})
+     insert into review_board 
+     (review_id, review_title, restaurant_name, review_content, register_date, writer_name, rating, region) 
+     values 
+     (re_board.nextval, 
+     #{review_title}, 
+     #{restaurant_name}, 
+     #{review_content}, 
+     <if test="register_date != null">#{register_date, jdbcType=TIMESTAMP}</if>
+     <if test="register_date == null">SYSDATE</if>, 
+     #{writer_name}, 
+     #{rating}, 
+     #{region})
   </insert>
-  
-  <insert id="insertSelectKey">
 
-  	<selectKey keyProperty="review_id" order="BEFORE" resultType="long">
-  		select re_board.nextval from dual
-  	</selectKey>
-  	
-  	insert into review_board (review_id, review_title, restaurant_name, review_content, register_date, writer_name, rating, region) 
-  	values (re_board.nextval, #{review_title}, #{restaurant_name}, #{review_content}, #{register_date}, #{writer_name}, #{rating}, #{region})
+  <!-- 리뷰 등록 (SelectKey 사용) -->
+  <insert id="insertSelectKey">
+     <selectKey keyProperty="review_id" order="BEFORE" resultType="long">
+        select re_board.nextval from dual
+     </selectKey>
+     
+     insert into review_board 
+     (review_id, review_title, restaurant_name, review_content, register_date, writer_name, rating, region) 
+     values 
+     (re_board.nextval, 
+     #{review_title}, 
+     #{restaurant_name}, 
+     #{review_content}, 
+     <if test="register_date != null">#{register_date, jdbcType=TIMESTAMP}</if>
+     <if test="register_date == null">SYSDATE</if>, 
+     #{writer_name}, 
+     #{rating}, 
+     #{region})
   </insert>
   
+  <!-- 리뷰 삭제 -->
   <delete id="delete">
-  	delete from review_board where review_id = #{review_id}
+     delete from review_board where review_id = #{review_id}
   </delete>
   
+  <!-- 리뷰 수정 -->
   <update id="update">
-  	update review_board 
-  	set review_title = #{review_title}, 
-  	restaurant_name = #{restaurant_name}, 
-  	review_content = #{review_content},
-  	register_date = #{review_date},
-  	rating = #{rating}, 
-  	region = #{region}
-  	where review_id = #{review_id}
+     update review_board 
+     set review_title = #{review_title}, 
+     restaurant_name = #{restaurant_name}, 
+     review_content = #{review_content},
+     register_date = #{register_date, jdbcType=TIMESTAMP}, 
+     rating = #{rating}, 
+     region = #{region}
+     where review_id = #{review_id}
   </update>
   
-  <!-- 검색조건을 함수화 시킴(getListWithPaging, getTotalCount에서 사용) -->
-  <!-- ✅ 수정된 criteria -->
-	<sql id="criteria"> 
-	  <trim prefix="(" suffix=")" prefixOverrides="or" suffixOverrides="or">  	                                                 
-	  	<foreach collection="typeArr" item="type" separator="or">
-	  		<if test="type=='T'.toString()">
-	  			review_title like '%'||#{keyword}||'%'
-	  		</if>
-	  		<if test="type=='C'.toString()">
-	  			review_content like '%'||#{keyword}||'%'
-	  		</if>
-	  		<if test="type=='W'.toString()">
-	  			writer_name like '%'||#{keyword}||'%'
-	  		</if>
-	  	</foreach>
-	  </trim>
-	</sql>
+  <!-- 검색 조건 -->
+  <sql id="criteria"> 
+     <trim prefix="(" suffix=")" prefixOverrides="or" suffixOverrides="or">                                                      
+        <foreach collection="typeArr" item="type" separator="or">
+           <if test="type=='T'.toString()">
+              review_title like '%'||#{keyword}||'%'
+           </if>
+           <if test="type=='C'.toString()">
+              review_content like '%'||#{keyword}||'%'
+           </if>
+           <if test="type=='W'.toString()">
+              writer_name like '%'||#{keyword}||'%'
+           </if>
+        </foreach>
+     </trim>
+   </sql>
 
-  
+  <!-- 페이징 처리 -->
   <select id="getListWithPaging" resultType="org.zerock.domain.ReviewVO">
   <![CDATA[
   select review_id, review_title, restaurant_name, review_content, writer_name, rating, region, register_date
@@ -72,25 +94,26 @@
     rownum rn, review_id, review_title, restaurant_name, review_content, writer_name, rating, region, register_date
     from review_board
     where 
-  ]]>	
+  ]]>
     
   <include refid="criteria"></include>    
     
-  <![CDATA[	
+  <![CDATA[   
     rownum <= #{pageNum} * #{amount}
   )
   where rn > (#{pageNum}-1) * #{amount}
   ]]>
 </select>
   
+  <!-- 총 개수 -->
   <select id="getTotalCount" resultType="int">
-  	select count(*) from review_board 
-  	where 1=1
-  	<include refid="criteria" />
-  	and review_id > 0
+     select count(*) from review_board 
+     where 1=1
+     <include refid="criteria" />
+     and review_id > 0
   </select>
   
-  <!-- 테스트 -->
+  <!-- 검색 테스트 -->
   <select id="searchTest" resultType="org.zerock.domain.ReviewVO">
   <![CDATA[
   select * from review_board 
@@ -115,3 +138,4 @@
   </select>
   
 </mapper>
+  

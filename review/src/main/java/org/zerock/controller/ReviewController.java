@@ -46,7 +46,9 @@ public class ReviewController {
 		service.register(review);
 		
 		rttr.addFlashAttribute("result", review.getReview_id());
-		
+		 // 로그로 result 확인
+	    log.info("result ID: " + review.getReview_id());
+	    
 		return "redirect:/review/list";
 	  //DB의 변경이 일어나면 redirect방식으로 반드시 화면전환을 시켜야 한다(도배방지)
 	  //PRG 패턴 : Post -> Redirect -> Get 
@@ -93,6 +95,7 @@ public class ReviewController {
 		return "redirect:/review/list";
 	}	
 	
+
 	@GetMapping("/exUpload")
 	public void exUpload() {
 		log.info("exUpload.........");
