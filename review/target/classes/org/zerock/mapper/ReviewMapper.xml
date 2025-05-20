@@ -16,8 +16,8 @@
   </select>
   
   <insert id="insert">
-  	insert into review_board (review_id, review_title, restaurant_name, review_content, writer_name, rating, region) 
-  	values (re_board.nextval, #{review_title}, #{restaurant_name}, #{review_content}, #{writer_name}, #{rating}, #{region})
+  	insert into review_board (review_id, review_title, restaurant_name, review_content, register_date, writer_name, rating, region) 
+  	values (re_board.nextval, #{review_title}, #{restaurant_name}, #{review_content}, #{register_date}, #{writer_name}, #{rating}, #{region})
   </insert>
   
   <insert id="insertSelectKey">
@@ -26,8 +26,8 @@
   		select re_board.nextval from dual
   	</selectKey>
   	
-  	insert into review_board (review_id, review_title, restaurant_name, review_content, writer_name, rating, region) 
-  	values (#{review_id}, #{review_title}, #{restaurant_name}, #{review_content}, #{writer_name}, #{rating}, #{region})
+  	insert into review_board (review_id, review_title, restaurant_name, review_content, register_date, writer_name, rating, region) 
+  	values (re_board.nextval, #{review_title}, #{restaurant_name}, #{review_content}, #{register_date}, #{writer_name}, #{rating}, #{region})
   </insert>
   
   <delete id="delete">
@@ -39,6 +39,7 @@
   	set review_title = #{review_title}, 
   	restaurant_name = #{restaurant_name}, 
   	review_content = #{review_content},
+  	register_date = #{review_date},
   	rating = #{rating}, 
   	region = #{region}
   	where review_id = #{review_id}
@@ -64,23 +65,23 @@
 
   
   <select id="getListWithPaging" resultType="org.zerock.domain.ReviewVO">
-  	<![CDATA[
-  	select review_id, review_title, restaurant_name, review_content, writer_name, rating, region
-  	from(
-  		select /*+ index_desc(review_board pk_board) */
-  		rownum rn, review_id, review_title, restaurant_name, review_content, writer_name, rating, region
-  		from review_board
-  		where 
-  	]]>	
-  	    
-  	<include refid="criteria"></include>    
-  	    
-  	<![CDATA[	
-  		rownum <= #{pageNum} * #{amount}
-  	)
-  	where rn > (#{pageNum}-1) * #{amount}
-	]]>	
-  </select>
+  <![CDATA[
+  select review_id, review_title, restaurant_name, review_content, writer_name, rating, region, register_date
+  from(
+    select /*+ index_desc(review_board pk_board) */
+    rownum rn, review_id, review_title, restaurant_name, review_content, writer_name, rating, region, register_date
+    from review_board
+    where 
+  ]]>	
+    
+  <include refid="criteria"></include>    
+    
+  <![CDATA[	
+    rownum <= #{pageNum} * #{amount}
+  )
+  where rn > (#{pageNum}-1) * #{amount}
+  ]]>
+</select>
   
   <select id="getTotalCount" resultType="int">
   	select count(*) from review_board 

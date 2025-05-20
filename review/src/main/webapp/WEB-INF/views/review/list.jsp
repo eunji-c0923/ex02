@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../resources/css/list_css.css">
-    <script src="script/jquery-1.12.3.js"></script>
-    <script src="script/script.js"></script>
+    <script src="../resources/js/jquery-1.12.3.js"></script>
+    <script src="../resources/js/list_script.js"></script>
 </head>
 <body>
 
@@ -91,11 +92,7 @@
 
         <div class="controls">
         <div class="dropdown">
-          <button class="dropbtn">정렬</button>
-          <div class="dropdown-content">
-            <a href="#" id="sort-high">평점 높은순</a>
-            <a href="#" id="sort-low">평점 낮은순</a>
-          </div>
+          <button class="dropbtn">등록</button>
         </div>
 
         <div class="search">
@@ -111,7 +108,7 @@
             <th>지역</th>
             <th>제목</th>
             <th>작성자</th>
-            <th>게시날</th>
+            <th>등록일</th>
             </tr>
         </thead>
       
@@ -130,7 +127,9 @@
                     		</td>
                     		
                     		<td><c:out value="${review.writer_name}" /></td>
-                    		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${review.register_date}"/></td>
+                    		<td>
+  							<fmt:formatDate value="${review.register_date}" pattern="yyyy-MM-dd" />
+							</td>
                     		
                     	</tr>
                     </c:forEach>
