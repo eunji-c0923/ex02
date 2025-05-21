@@ -62,23 +62,6 @@ public class ReviewControllerTests {
 
 		log.info("==========> redirected to: " + resultPage);
 	}
-/*
-	@Test
-	public void testRegister() throws Exception{
-		String resultPage = mockMvc.perform(MockMvcRequestBuilders
-				.post("/review/register")
-				.param("review_title", "20250520테스트")
-				.param("restaurant_name", "새로운 가게")
-				.param("review_content", "테스트 새글 내용")			
-				.param("writer_name", "20250520작성자"))
-				.param("rating", "4")
-				.param("region", "서울")
-				.andReturn()
-				.getModelAndView()
-				.getViewName();
-		
-		log.info("==========>" + resultPage);
-	}*/
 	
 	@Test
 	public void testget() throws Exception {

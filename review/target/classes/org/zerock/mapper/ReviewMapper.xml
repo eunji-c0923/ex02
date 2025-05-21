@@ -61,8 +61,7 @@
      update review_board 
      set review_title = #{review_title}, 
      restaurant_name = #{restaurant_name}, 
-     review_content = #{review_content},
-     register_date = #{register_date, jdbcType=TIMESTAMP}, 
+     review_content = #{review_content}, 
      rating = #{rating}, 
      region = #{region}
      where review_id = #{review_id}

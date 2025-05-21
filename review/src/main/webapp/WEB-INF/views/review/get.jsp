@@ -92,6 +92,13 @@
                     <div class="main-card">
                         <!-- 동적으로 출력 -->
                         <h3>${review.review_title}</h3>
+                        <div class="edit-actions">
+		                    <button type="button" class="btn-list"  onclick="location.href='/review/list';">리스트</button>
+		                    <button type="button" class="btn-modifty" 
+		                    onclick="location.href='/review/modify?review_id=${review.review_id}&pageNum=${cri.pageNum}&amount=${cri.amount}&type=${cri.type}&keyword=${cri.keyword}';">수정</button>
+	               		</div>
+                        
+                        
                         <p class="writer"><strong>작성자:</strong> ${review.writer_name}</p>
 
                         <div class="option">
@@ -107,11 +114,6 @@
             <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA2MjZfMjM5%2FMDAxNzE5MzY1MTEyNTU1.p5ZDtbFV1MNRBGl2VYHufZKYzyBrHBR8HTTCWJPXrqUg.KNzAFt5pUrAWRNZs6MQupItChuqzHCm_aAez2yflapcg.JPEG%2Fimage_6.jpg&type=sc960_832" alt="리뷰 사진" class="review-img" />
         </div>
         </main>
-        <div class="edit-actions">
-            <button type="submit" class="btn-writer">등록</button>
-            <!--<button type="submit" class="btn-update">수 정</button>
-            <button type="button" class="btn-delete">삭 제</button>-->
-        </div>
 
 
       <!-- 댓글 섹션: 절대 건들지 말것 -->

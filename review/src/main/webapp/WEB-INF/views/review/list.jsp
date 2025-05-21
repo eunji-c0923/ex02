@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../resources/css/list_css.css">
-    <script src="script/jquery-1.12.3.js"></script>
-    <script src="script/list_script.js"></script>
+    <script src="/resources/script/jquery-1.12.3.js"></script> <!-- 수정됨: 절대경로 사용 -->
+    <script src="/resources/script/list_script.js"></script> <!-- 수정됨: 절대경로 사용 -->
 </head>
 <body>
 
@@ -113,23 +113,26 @@
         </thead>
         <tbody id="reviewTableBody"></tbody>
         <c:forEach var="review" items="${list}">
-   			 <tr>
-        		<td><c:out value="${review.review_id}" /></td>               
+             <tr>
+                <td><c:out value="${review.review_id}" /></td>
 
-        		<td>
-            		<a class="move" href="${pageContext.request.contextPath}/review/get?review_id=${review.review_id}">
-                	<c:out value="${review.region}"/></a>
-        		</td>
-        
-        		<td>
-            		<a class="move" href="${pageContext.request.contextPath}/review/get?review_id=${review.review_id}">
-                	<c:out value="${review.review_title}"/></a>
-        		</td>
-        
-        		<td><c:out value="${review.writer_name}" /></td>
-        		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${review.register_date}"/></td>
-    		</tr>
-		</c:forEach>
+                <!-- 수정됨: pageNum, amount, type, keyword 전달 추가 -->
+                <td>
+                    <a class="move" href="${pageContext.request.contextPath}/review/get?review_id=${review.review_id}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}&type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}">
+                    <c:out value="${review.region}"/></a>
+                </td>
+
+                <!-- 수정됨: pageNum, amount, type, keyword 전달 추가 -->
+                <td>
+                    <a class="move" href="${pageContext.request.contextPath}/review/get?review_id=${review.review_id}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}&type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}">
+                    <c:out value="${review.review_title}"/></a>
+                </td>
+
+                <td><c:out value="${review.writer_name}" /></td>
+                <td><fmt:formatDate pattern="yyyy-MM-dd" value="${review.register_date}"/></td>
+                <td><c:out value="${review.review_content}" /></td>
+            </tr>
+        </c:forEach>
      
         </table> 
 			 <!-- 페이징 처리 -->

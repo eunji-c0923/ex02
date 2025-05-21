@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../resources/css/writer_css.css">
+    <link rel="stylesheet" href="../resources/css/modify_css.css">
     <script src="script/jquery-1.12.3.js"></script>
     <script src="script/writer_script.js"></script>
 </head>
@@ -83,62 +87,108 @@
             </nav>
         </header>
         
-        <div id="body">
-            <div id="list">
+<div id="body">
+    <div id="list">
+    
+    <main class="content">
+        <form class="main-card" method="post">
         
-        <main class="content">
-            <form class="main-card">
-            <label for="author"><strong>제목:</strong></label>
-            <input type="text" id="author" name="author" value="진짜 맛있는 고기집" />
+        <!-- 수정,삭제 버튼 클릭 시 pageNum, amount값 전달 -->
+    	<%-- <input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+        <input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>  
+        <!-- 수정,삭제 버튼 클릭 시 type, keyword값 전달 -->   
+        <input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>       	
+        <input type="hidden" name="keyword" value='<c:out value="${cri.keyword}"/>'> --%>
         
-            <label for="author"><strong>작성자:</strong></label>
-            <input type="text" id="author" name="author" value="김맛객" />
+        <input type="hidden" name="pageNum" value="${cri.pageNum}" />
+        <input type="hidden" name="amount" value="${cri.amount}" />
+        <input type="hidden" name="type" value="${cri.type}" />
+        <input type="hidden" name="keyword" value="${cri.keyword}" />
+        
+        
+        <input type="hidden" name="review_id" value="${review.review_id}"/> 
+        
+        <!-- 제목 -->
+        <label for="review_title"><strong>제목:</strong></label>
+        <input type="text" id="review_title" name="review_title" value="<c:out value='${review.review_title}'/>"/>
+    
+        <!-- 작성자 -->
+        <label for="writer_name"><strong>작성자:</strong></label>
+        <input type="text" id="writer_name" name="writer_name" value="<c:out value='${review.writer_name}'/>" readonly="readonly"/>
 
-            <label for="region"><strong>지역명:</strong></label>
-            <input type="text" id="region" name="region" value="서울 강남구" />
+        <!-- 지역명 -->
+        <label for="region"><strong>지역명:</strong></label>
+        <input type="text" id="region" name="region" value="<c:out value='${review.region}'/>"/>
 
-            <label for="restaurant"><strong>맛집 이름:</strong></label>
-            <input type="text" id="restaurant" name="restaurant" value="불타는 고기" />
+        <!-- 맛집 이름 -->
+        <label for="restaurant_name"><strong>맛집 이름:</strong></label>
+        <input type="text" id="restaurant_name" name="restaurant_name" value="<c:out value='${review.restaurant_name}'/>"/>
 
-            <label for="rating"><strong>평점:</strong></label>
-                <select id="rating" name="rating">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9" selected>9</option>
-                <option value="10">10</option>
-                </select>
+        <!-- 평점 -->
+        <label for="rating"><strong>평점:</strong></label>
+        <select id="rating" name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9" selected>9</option>
+            <option value="10">10</option>
+        </select>
 
+        <!-- 리뷰 -->
+        <label for="review_content"><strong>리뷰:</strong></label>
+        <textarea id="review_content" name="review_content" rows="5"><c:out value='${review.review_content}'/></textarea>
 
-            <label for="review"><strong>리뷰:</strong></label>
-            <textarea id="review" name="review" rows="5">고기의 육즙이 터지는 최고의 맛집! 반찬도 정갈하고 분위기까지 완벽해요.
-            직원분들 서비스도 친절하고, 다음에도 꼭 재방문할 거예요!</textarea>
+        <!-- 리뷰 사진 (추후 처리) -->
+        <label for="review-img"><strong>리뷰 사진:</strong></label>
+        <input type="file" id="review-img" name="review-img" accept="image/*" />
 
-            <label for="review-img"><strong>리뷰 사진:</strong></label>
-            <input type="file" id="review-img" name="review-img" accept="image/*" />
-
-        <div class="edit-actions">
-            <button type="submit" class="btn-writer">등록</button>
-            <!--<button type="submit" class="btn-update">수 정</button>
-            <button type="button" class="btn-delete">삭 제</button>-->
+        <!-- 제출 버튼 -->
+         <div class="edit-actions">
+            <button type="button" data-oper='modify' class="btn-update">수정</button>
+            <button type="button" data-oper='remove' class="btn-delete">삭제</button>
+            <button type="button" data-oper='list' class="btn-writer">리스트</button>
         </div>
         </form>
 
         </main>
-        
-
-
-            
+       
         </div>
         </div>
     </div> 
 
- 
-    
+<script src="/resources/script/jquery-1.12.3.js"></script>
+
+<script>
+$(document).ready(function () {
+    const formObj = $("form");
+
+    $(".edit-actions button").on("click", function (e) {
+        e.preventDefault(); // submit 막기
+
+        const oper = $(this).data("oper");
+
+        if (oper === 'modify') {
+            formObj.attr("action", "/review/modify");
+            formObj.submit();
+
+        } else if (oper === 'remove') {
+            if (confirm("정말 삭제하시겠습니까?")) {
+                formObj.attr("action", "/review/remove");
+                formObj.submit();
+            }
+
+        } else if (oper === 'list') {
+            // form submit 필요 없이 그냥 이동
+            location.href = "/review/list";
+        }
+    });
+});
+</script>
+
 </body>
 </html>
